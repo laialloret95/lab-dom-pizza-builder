@@ -111,16 +111,16 @@ function renderPrice() {
   let ingredientStatus = Object.values(state);
   let totalPrice = 0;
 
-  pricePanel.innerHTML = "";
+  pricePanel.innerHTML = ""; // clean existing list
 
   for (let i=0; i< ingredientStatus.length; i++) {
     if (ingredientStatus[i]) {
       pricePanel.innerHTML += `<li>$${ingredientsValues[i].price} ${ingredientsValues[i].name}</li>`
       totalPrice += ingredientsValues[i].price;
-      cheesePizzaPrice.innerText = `$${totalPrice} chesse pizza`;
-      finalPrice.innerText = `$${totalPrice}`;
     }
   };
+  cheesePizzaPrice.innerText = `$${totalPrice} chesse pizza`;
+  finalPrice.innerText = `$${totalPrice}`;
 };
 
 renderEverything();
