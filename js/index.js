@@ -86,7 +86,19 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-}
+  
+  // Given that buttons and Ingredient statuses are in the same order we can use a loop
+  let buttons = document.querySelectorAll(".btn");
+  let ingredientStatus = Object.values(state);
+
+  for (let i=0; i< ingredientStatus.length; i++) {
+    if (ingredientStatus[i]) {
+      buttons[i].classList.add('active');
+    } else {
+      buttons[i].classList.remove('active');
+    };
+  };
+};
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
