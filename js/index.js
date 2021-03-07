@@ -10,6 +10,8 @@ let ingredients = {
   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
 };
 
+let ingredientsValues = Object.values(ingredients)
+
 // Initial value of the state (the state values can change over time)
 let state = {
   pepperoni: true,
@@ -86,7 +88,7 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  
+
   // Given that buttons and Ingredient statuses are in the same order we can use a loop
   let buttons = document.querySelectorAll(".btn");
   let ingredientStatus = Object.values(state);
@@ -102,7 +104,24 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-}
+  let cheesePizzaPrice = document.querySelector(".panel.price b");
+  let finalPrice = document.querySelector(".panel.price strong");
+  let pricePanel = document.querySelector(".panel.price ul");
+
+  let ingredientStatus = Object.values(state);
+  let totalPrice = 0;
+
+  pricePanel.innerHTML = "";
+
+  for (let i=0; i< ingredientStatus.length; i++) {
+    if (ingredientStatus[i]) {
+      pricePanel.innerHTML += `<li>$${ingredientsValues[i].price} ${ingredientsValues[i].name}</li>`
+      totalPrice += ingredientsValues[i].price;
+      cheesePizzaPrice.innerText = `$${totalPrice} chesse pizza`;
+      finalPrice.innerText = `$${totalPrice}`;
+    }
+  };
+};
 
 renderEverything();
 
